@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessFile.Backend.Application\BusinessFile.Backend.Application.csproj" />
-    <ProjectReference Include="..\BusinessFile.Backend.Infrastructure\BusinessFile.Backend.Infrastructure.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Application\CMS.Backend.Application.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Infrastructure\CMS.Backend.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

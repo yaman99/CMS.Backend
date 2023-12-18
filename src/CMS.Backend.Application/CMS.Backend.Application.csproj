@@ -15,8 +15,8 @@
 	<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessFile.Backend.Domain\BusinessFile.Backend.Domain.csproj" />
-    <ProjectReference Include="..\BusinessFile.Backend.Shared\BusinessFile.Backend.Shared.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Domain\CMS.Backend.Domain.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Shared\CMS.Backend.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Helpers\" />

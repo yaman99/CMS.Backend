@@ -1,11 +1,11 @@
-﻿using BusinessFile.Backend.Infrastructure.Mongo;
+﻿using CMS.Backend.Infrastructure.Mongo;
 using Autofac;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using BusinessFile.Backend.Shared;
-using BusinessFile.Backend.Domain.Common;
+using CMS.Backend.Shared;
+using CMS.Backend.Domain.Common;
 
-namespace BusinessFile.Backend.Infrastructure
+namespace CMS.Backend.Infrastructure
 {
     public static class DependencyInjection
     {

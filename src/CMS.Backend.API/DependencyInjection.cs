@@ -1,10 +1,10 @@
 ﻿
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using BusinessFile.Backend.Api.Filters;
+using CMS.Backend.Api.Filters;
 
 
-namespace BusinessFile.Backend.API
+namespace CMS.Backend.API
 {
     public static class DependencyInjection
     {

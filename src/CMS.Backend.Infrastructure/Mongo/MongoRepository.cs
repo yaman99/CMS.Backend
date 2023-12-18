@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using BusinessFile.Backend.Domain.Common;
-using BusinessFile.Backend.Shared.Types;
+using CMS.Backend.Domain.Common;
+using CMS.Backend.Shared.Types;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace BusinessFile.Backend.Infrastructure.Mongo
+namespace CMS.Backend.Infrastructure.Mongo
 {
     public class MongoRepository<TEntity, T> : IMongoRepository<TEntity, T> where TEntity : IIdentifiable<T>
     {

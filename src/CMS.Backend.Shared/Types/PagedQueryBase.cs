@@ -1,4 +1,4 @@
-﻿namespace BusinessFile.Backend.Shared.Types
+﻿namespace CMS.Backend.Shared.Types
 {
     public abstract class PagedQueryBase : IPagedQuery
     {

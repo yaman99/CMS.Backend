@@ -1,4 +1,4 @@
-namespace BusinessFile.Backend.Domain.Common {
+namespace CMS.Backend.Domain.Common {
     public abstract class BaseEntity<T> : IIdentifiable<T>
     {
         public T Id { get; protected set; }

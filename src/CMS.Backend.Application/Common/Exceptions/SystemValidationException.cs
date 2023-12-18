@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentValidation.Results;
 
-namespace BusinessFile.Backend.Application.Common.Exceptions
+namespace CMS.Backend.Application.Common.Exceptions
 {
     public class SystemValidationException : Exception
     {

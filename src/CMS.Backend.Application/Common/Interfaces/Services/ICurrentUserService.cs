@@ -1,4 +1,4 @@
-﻿namespace BusinessFile.Backend.Application.Common.Interfaces
+﻿namespace CMS.Backend.Application.Common.Interfaces
 {
     public interface ICurrentUserService
     {

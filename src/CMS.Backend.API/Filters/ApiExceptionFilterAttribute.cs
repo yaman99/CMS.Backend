@@ -1,9 +1,9 @@
-﻿using BusinessFile.Backend.Application.Common.Exceptions;
+﻿using CMS.Backend.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 
-namespace BusinessFile.Backend.Api.Filters
+namespace CMS.Backend.Api.Filters
 {
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {

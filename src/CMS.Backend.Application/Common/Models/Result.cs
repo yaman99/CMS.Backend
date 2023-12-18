@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BusinessFile.Backend.Application.Common.Models
+namespace CMS.Backend.Application.Common.Models
 {
     public class Result
     {

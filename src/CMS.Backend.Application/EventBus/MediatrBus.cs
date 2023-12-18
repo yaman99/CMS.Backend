@@ -1,11 +1,11 @@
 ﻿
-using BusinessFile.Backend.Domain.Common;
-using BusinessFile.Backend.Application.EventBus.Bus;
+using CMS.Backend.Domain.Common;
+using CMS.Backend.Application.EventBus.Bus;
 using MediatR;
 using System;
 using System.Threading.Tasks;
 
-namespace BusinessFile.Backend.Application.EventBus
+namespace CMS.Backend.Application.EventBus
 {
     public class MediatrBus : IDomainBus
     {

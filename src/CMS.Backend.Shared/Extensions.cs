@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Linq;
 
-namespace BusinessFile.Backend.Shared
+namespace CMS.Backend.Shared
 {
     public static class Extensions
     {

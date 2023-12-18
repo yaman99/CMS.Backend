@@ -1,11 +1,11 @@
-﻿using BusinessFile.Backend.Application.Common.Exceptions;
+﻿using CMS.Backend.Application.Common.Exceptions;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BusinessFile.Backend.Application.Common.Behaviours
+namespace CMS.Backend.Application.Common.Behaviours
 {
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {

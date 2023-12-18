@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BusinessFile.Backend.Application.EventBus.Bus;
+using CMS.Backend.Application.EventBus.Bus;
 
-namespace BusinessFile.Backend.API.Controllers
+namespace CMS.Backend.API.Controllers
 {
     public class BaseController : ControllerBase
     {

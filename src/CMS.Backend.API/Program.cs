@@ -1,9 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using System.Reflection;
-using BusinessFile.Backend.API;
-using BusinessFile.Backend.Appilication;
-using BusinessFile.Backend.Infrastructure;
+using CMS.Backend.API;
+using CMS.Backend.Appilication;
+using CMS.Backend.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +26,8 @@ builder.Services.AddHsts(options =>
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>(cb =>
     {
-        cb.RegisterAssemblyTypes(Assembly.GetEntryAssembly()!, Assembly.Load("BusinessFile.Backend.Application"),
-                Assembly.Load("BusinessFile.Backend.Infrastructure"))
+        cb.RegisterAssemblyTypes(Assembly.GetEntryAssembly()!, Assembly.Load("CMS.Backend.Application"),
+                Assembly.Load("CMS.Backend.Infrastructure"))
                     .AsImplementedInterfaces();
 
         cb.AddMongo();

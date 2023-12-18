@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessFile.Backend.Application.Common.Mappings
+namespace CMS.Backend.Application.Common.Mappings
 {
     public class MappingProfile : Profile
     {

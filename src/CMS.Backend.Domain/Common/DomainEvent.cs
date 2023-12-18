@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace BusinessFile.Backend.Domain.Common
+namespace CMS.Backend.Domain.Common
 {
     //Base event as base notification
     public abstract class DomainEvent : INotification

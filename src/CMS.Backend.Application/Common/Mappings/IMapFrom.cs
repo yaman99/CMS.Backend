@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessFile.Backend.Application.Common.Mappings
+namespace CMS.Backend.Application.Common.Mappings
 {
     public interface IMapFrom<T> 
     {

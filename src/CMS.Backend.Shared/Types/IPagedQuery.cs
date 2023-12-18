@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace BusinessFile.Backend.Shared.Types
+namespace CMS.Backend.Shared.Types
 {
     public interface IPagedQuery : IRequest
     {

@@ -1,12 +1,12 @@
-﻿using BusinessFile.Backend.Application.Common.Behaviours;
-using BusinessFile.Backend.Application.EventBus;
-using BusinessFile.Backend.Application.EventBus.Bus;
+﻿using CMS.Backend.Application.Common.Behaviours;
+using CMS.Backend.Application.EventBus;
+using CMS.Backend.Application.EventBus.Bus;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace BusinessFile.Backend.Appilication
+namespace CMS.Backend.Appilication
 {
     public static class DependencyInjection
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using BusinessFile.Backend.Domain.Common;
-using BusinessFile.Backend.Shared.Types;
+using CMS.Backend.Domain.Common;
+using CMS.Backend.Shared.Types;
 
-namespace BusinessFile.Backend.Infrastructure.Mongo
+namespace CMS.Backend.Infrastructure.Mongo
 {
     public interface IMongoRepository<TEntity,T> where TEntity : IIdentifiable<T>
     {

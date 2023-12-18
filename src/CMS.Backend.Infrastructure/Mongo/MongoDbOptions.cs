@@ -1,4 +1,4 @@
-namespace BusinessFile.Backend.Infrastructure.Mongo
+namespace CMS.Backend.Infrastructure.Mongo
 {
     public class MongoDbOptions
     {

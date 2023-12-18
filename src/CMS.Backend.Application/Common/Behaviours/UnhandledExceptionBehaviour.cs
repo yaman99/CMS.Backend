@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 
 
-namespace BusinessFile.Backend.Application.Common.Behaviours
+namespace CMS.Backend.Application.Common.Behaviours
 {
     public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {

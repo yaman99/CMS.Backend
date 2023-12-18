@@ -1,6 +1,6 @@
 using System;
 
-namespace BusinessFile.Backend.Shared.Types
+namespace CMS.Backend.Shared.Types
 {
     public class AggregateId : IEquatable<AggregateId>
     {

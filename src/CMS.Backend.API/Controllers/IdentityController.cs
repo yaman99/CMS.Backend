@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
-using BusinessFile.Backend.Application.Common.Models;
+using CMS.Backend.Application.Common.Models;
 using Newtonsoft.Json;
 using System.Text;
 
 
-namespace BusinessFile.Backend.API.Controllers
+namespace CMS.Backend.API.Controllers
 {
     [ApiController]
     public class IdentityController : BaseController

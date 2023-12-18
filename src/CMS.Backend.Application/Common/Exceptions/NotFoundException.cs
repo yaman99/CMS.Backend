@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BusinessFile.Backend.Application.Common.Exceptions
+namespace CMS.Backend.Application.Common.Exceptions
 {
     public class NotFoundException : Exception
     {

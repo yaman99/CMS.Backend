@@ -15,8 +15,8 @@
 	<PackageReference Include="MongoDB.Driver" Version="2.13.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessFile.Backend.Application\BusinessFile.Backend.Application.csproj" />
-    <ProjectReference Include="..\BusinessFile.Backend.Shared\BusinessFile.Backend.Shared.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Application\CMS.Backend.Application.csproj" />
+    <ProjectReference Include="..\CMS.Backend.Shared\CMS.Backend.Shared.csproj" />
   </ItemGroup>
 
 </Project>

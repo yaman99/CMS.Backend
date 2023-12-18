@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using BusinessFile.Backend.Shared.Types;
+using CMS.Backend.Shared.Types;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace BusinessFile.Backend.Infrastructure.Mongo
+namespace CMS.Backend.Infrastructure.Mongo
 {
     public static class Pagination
     {

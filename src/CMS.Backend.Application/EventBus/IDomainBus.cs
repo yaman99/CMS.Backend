@@ -1,9 +1,9 @@
 ﻿
 using MediatR;
 using System.Threading.Tasks;
-using BusinessFile.Backend.Domain.Common;
+using CMS.Backend.Domain.Common;
 
-namespace BusinessFile.Backend.Application.EventBus.Bus
+namespace CMS.Backend.Application.EventBus.Bus
 {
     public interface IDomainBus
     {

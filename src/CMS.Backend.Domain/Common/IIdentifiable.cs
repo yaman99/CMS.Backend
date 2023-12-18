@@ -1,4 +1,4 @@
-namespace BusinessFile.Backend.Domain.Common
+namespace CMS.Backend.Domain.Common
 {
     public interface IIdentifiable<T> 
     {

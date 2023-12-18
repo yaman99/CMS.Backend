@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace BusinessFile.Backend.Infrastructure.Mongo
+namespace CMS.Backend.Infrastructure.Mongo
 {
     public class MongoDbSeeder : IMongoDbSeeder
     {

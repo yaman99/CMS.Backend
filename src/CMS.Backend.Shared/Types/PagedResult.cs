@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BusinessFile.Backend.Shared.Types
+namespace CMS.Backend.Shared.Types
 {
     public class PagedResult<T> : PagedResultBase
     {
