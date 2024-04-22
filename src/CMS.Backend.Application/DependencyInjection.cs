@@ -12,7 +12,7 @@ namespace CMS.Backend.Appilication
     {
         public static IServiceCollection AddAppilication(this IServiceCollection services)
         {
-            
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());

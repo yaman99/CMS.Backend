@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Helpers\" />
-    <Folder Include="Features\" />
   </ItemGroup>
 
 </Project>

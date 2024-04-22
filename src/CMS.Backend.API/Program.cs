@@ -4,6 +4,10 @@ using System.Reflection;
 using CMS.Backend.API;
 using CMS.Backend.Appilication;
 using CMS.Backend.Infrastructure;
+using CMS.Backend.Domain.Entities;
+using Autofac.Core;
+using CMS.Backend.Shared.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAppilication();
 builder.Services.AddControllers();
 builder.Services.AddApi(builder.Configuration);
+builder.Services.AddJwt();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
@@ -31,6 +37,8 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
                     .AsImplementedInterfaces();
 
         cb.AddMongo();
+        cb.AddMongoRepository<User, Guid>("Users");
+        cb.RegisterType<PasswordHasher<User>>().As<IPasswordHasher<User>>();
     });
 
 var app = builder.Build();
@@ -42,6 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseCors(x => x.WithOrigins(app.Configuration["AppSettings:Client_Url"].ToString())

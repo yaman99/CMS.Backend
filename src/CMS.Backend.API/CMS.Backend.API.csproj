@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CMS.Backend.Application\CMS.Backend.Application.csproj" />
     <ProjectReference Include="..\CMS.Backend.Infrastructure\CMS.Backend.Infrastructure.csproj" />
+	<ProjectReference Include="..\CMS.Backend.Shared\CMS.Backend.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 using System;
 
-namespace CMS.Backend.Shared.Exceptions
+namespace CMS.Backend.Domain
 {
     public class DomainException : Exception
     {
