@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CMS.Backend.Application\CMS.Backend.Application.csproj" />
     <ProjectReference Include="..\CMS.Backend.Shared\CMS.Backend.Shared.csproj" />
+	<ProjectReference Include="..\CMS.Backend.Domain\CMS.Backend.Domain.csproj" />
   </ItemGroup>
 
 </Project>
