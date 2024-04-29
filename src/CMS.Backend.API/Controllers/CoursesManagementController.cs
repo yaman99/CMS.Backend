@@ -11,10 +11,12 @@ namespace CMS.Backend.API.Controllers
         [HttpPost("add-course")]
         public async Task<IActionResult> AddCourse([FromBody] AddNewUserCommand command)
             => Ok(await Bus.ExecuteAsync<AddNewUserCommand, Result>(command));
-        public async Task<IActionResult> UpdateCourse([FromBody] AddNewUserCommand command)
-            => Ok(await Bus.ExecuteAsync<AddNewUserCommand, Result>(command));
-        public async Task<IActionResult> DeleteCourse([FromBody] AddNewUserCommand command)
-            => Ok(await Bus.ExecuteAsync<AddNewUserCommand, Result>(command));
+        //[HttpPost("add-course")]
+        //public async Task<IActionResult> UpdateCourse([FromBody] AddNewUserCommand command)
+        //    => Ok(await Bus.ExecuteAsync<AddNewUserCommand, Result>(command));
+        //[HttpPost("add-course")]
+        //public async Task<IActionResult> DeleteCourse([FromBody] AddNewUserCommand command)
+        //    => Ok(await Bus.ExecuteAsync<AddNewUserCommand, Result>(command));
 
     }
 }
