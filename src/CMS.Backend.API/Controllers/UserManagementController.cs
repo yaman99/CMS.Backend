@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CMS.Backend.API.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class UserManagementController : BaseController
     {
         [HttpPost("add-new-user")]
@@ -32,6 +33,16 @@ namespace CMS.Backend.API.Controllers
 
         [HttpGet("get-all-users")]
         public async Task<IActionResult> GetAllUsersAsync()
+        {
+            var result = await Bus.ExecuteAsync<GetAllUsersQuery, Result>(new GetAllUsersQuery());
+
+            if (result.Succeeded)
+                return Ok(result.Data);
+            return BadRequest(result.Errors);
+        }
+
+        [HttpGet("get-user/{id}")]
+        public async Task<IActionResult> GetAllUsersAsync(Guid id)
         {
             var result = await Bus.ExecuteAsync<GetAllUsersQuery, Result>(new GetAllUsersQuery());
 

@@ -7,10 +7,12 @@ using CMS.Backend.Appilication.Features.Identity.Commands;
 using CMS.Backend.Shared.Authentication;
 using CMS.Backend.Application.Common.Exceptions;
 using CMS.Backend.Application.Features.Identity.Commands;
+using Microsoft.Net.Http.Headers;
 
 namespace CMS.Backend.API.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class IdentityController : BaseController
     {
         
@@ -29,7 +31,22 @@ namespace CMS.Backend.API.Controllers
         [HttpPost("sign-up")]
         public async Task<IActionResult> UserSignUp(UserSignUpCommand command)
             => Ok(await Bus.ExecuteAsync<UserSignUpCommand , Result>(command));
-        
+
+        [HttpPost("sign-out")]
+        public async Task<IActionResult> UserSignOut()
+        {
+            var accessToken = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+
+            var result = await Bus.ExecuteAsync<UserSignOutCommand, Result>(new UserSignOutCommand
+            {
+                AccessToken = accessToken,
+            });
+
+            if (result.Succeeded)
+                return Ok();
+            return BadRequest(result.Errors);
+        }
+
 
     }
 }

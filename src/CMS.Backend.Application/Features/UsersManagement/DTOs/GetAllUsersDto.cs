@@ -16,7 +16,7 @@ namespace CMS.Backend.Appilication.Features.UsersManagement.DTOs
         public string Name { get;  set; }
         public string UserType { get; set; }
         public bool IsActive { get;  set; }
-        public bool IsCompleted { get; set; }
+        //public bool IsCompleted { get; set; }
 
     }
 }

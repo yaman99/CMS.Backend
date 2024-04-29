@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using CMS.Backend.Application.Common.Mappings;
 using CMS.Backend.Application.Common.Models;
+using CMS.Backend.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Backend.Appilication.Features.UsersManagement.Commands
 {
-    public class UpdateUserCommand : IRequest<Result> 
+    public class UpdateUserCommand : IRequest<Result>  , IMapFrom<User>
     {
         public Guid UserId { get; set; }
         public string Email { get; set; }

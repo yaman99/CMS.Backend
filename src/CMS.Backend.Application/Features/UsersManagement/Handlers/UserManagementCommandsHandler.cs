@@ -87,10 +87,7 @@ namespace CMS.Backend.Appilication.Features.UsersManagement.Handlers
        
         private async Task CreateUser(Guid id, string email, string firstName, string lastName, string userType)
         {
-            var user = new User(id, email, firstName, lastName)
-            {
-                UserType = userType
-            };
+            var user = new User(id, email, userType, $"{firstName} {lastName}");
             var stampPasswrod = user.GenerateStampPassword();
             user.SetPassword(stampPasswrod, _passwordHasher);
 
