@@ -8,6 +8,10 @@ using CMS.Backend.Domain.Entities;
 using Autofac.Core;
 using CMS.Backend.Shared.Authentication;
 using Microsoft.AspNetCore.Identity;
+using CMS.Backend.Domain.Entities.CourseEntity;
+using CMS.Backend.Application.Common.Interfaces;
+using CMS.Backend.API.Services;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +31,34 @@ builder.Services.AddHsts(options =>
     options.IncludeSubDomains = true;
 });
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Test01", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme."
+
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+            }
+        });
+});
 
 // autofac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -38,6 +70,9 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
 
         cb.AddMongo();
         cb.AddMongoRepository<User, Guid>("Users");
+        cb.AddMongoRepository<Course, Guid>("Courses");
+
+        cb.RegisterType<CurrentUserService>().As<ICurrentUserService>().InstancePerLifetimeScope();
         cb.RegisterType<PasswordHasher<User>>().As<IPasswordHasher<User>>();
     });
 

@@ -11,7 +11,7 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Commands
 {
     public class AddCourseCommand : IRequest<Result>
     {
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
     }
@@ -26,22 +26,32 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Commands
     {
         public Guid CourseId { get; set; }
     }
-    public class AddLesson : IRequest<Result>
+
+    public class ApplyOnCourseCommand : IRequest<Result>
     {
+        public Guid CourseId { get; set; }
+    }
+    public class AddLessonCommand : IRequest<Result>
+    {
+        public Guid CourseId { get; set; }
         public string Name { get; set; }
         public IFileInfo Video { get; set; }
         public string Description { get; set; }
     }
-    public class EditLesson : IRequest<Result>
+    public class EditLessonCommand : IRequest<Result>
     {
+        public Guid LessonId { get; set; }
         public string Name { get; set; }
         public IFileInfo Video { get; set; }
         public string Description { get; set; }
     }
-    public class DeleteLesson : IRequest<Result>
+    public class DeleteLessonCommand : IRequest<Result>
     {
-        public string Name { get; set; }
-        public IFileInfo Video { get; set; }
-        public string Description { get; set; }
+        public Guid LessonId { get; set; }
+    }
+
+    public class GetLessonsQuery : IRequest<Result>
+    {
+        public Guid CourseId { get; set; }
     }
 }
