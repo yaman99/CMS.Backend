@@ -25,9 +25,19 @@ namespace CMS.Backend.Infrastructure.Repositories
             await _repository.AddAsync(course);
         }
 
+        public Task<Course> GetAsync(Guid id)
+        {
+            return _repository.GetAsync(id);
+        }
+
         public async Task<IEnumerable<Course>> GetinstructorCourses(Guid instructor)
         {
             return await _repository.FindAsync(x => x.Instructor == instructor);
+        }
+
+        public async Task UpdateAsync(Course course)
+        {
+            await _repository.UpdateAsync(course);
         }
     }
 

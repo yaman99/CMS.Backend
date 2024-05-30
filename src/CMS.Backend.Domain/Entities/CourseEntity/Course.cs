@@ -24,5 +24,9 @@ namespace CMS.Backend.Domain.Entities.CourseEntity
             Status = "available";
             Lessons = new List<Lesson>();
         }
+
+        public Course(Guid id ):base(id)
+        {
+        }
     }
 }

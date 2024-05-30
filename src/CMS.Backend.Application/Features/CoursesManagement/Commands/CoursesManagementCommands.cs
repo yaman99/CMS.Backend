@@ -1,5 +1,8 @@
-﻿using CMS.Backend.Application.Common.Models;
+﻿using CMS.Backend.Application.Common.Mappings;
+using CMS.Backend.Application.Common.Models;
+using CMS.Backend.Domain.Entities.CourseEntity;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
@@ -15,12 +18,13 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Commands
         public string Subject { get; set; }
         public string Description { get; set; }
     }
-    public class UpdateCourseCommand : IRequest<Result>
+    public class UpdateCourseCommand : IRequest<Result> , IMapFrom<Course>
     {
-        public Guid CourseId { get; set; }
-        public string Name { get; set; }
+        public Guid Id { get; set; }
+        public string Title { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
+        public string Status { get; set; }
     }
     public class DeleteCourseCommand : IRequest<Result>
     {
@@ -33,21 +37,22 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Commands
     }
     public class AddLessonCommand : IRequest<Result>
     {
-        public Guid CourseId { get; set; }
-        public string Name { get; set; }
-        public IFileInfo Video { get; set; }
+        public Guid Course { get; set; }
+        public string Title { get; set; }
+        public IFormFile Video { get; set; }
         public string Description { get; set; }
     }
     public class EditLessonCommand : IRequest<Result>
     {
-        public Guid LessonId { get; set; }
-        public string Name { get; set; }
-        public IFileInfo Video { get; set; }
+        public Guid Lesson { get; set; }
+        public Guid Course { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
     }
     public class DeleteLessonCommand : IRequest<Result>
     {
-        public Guid LessonId { get; set; }
+        public Guid Lesson { get; set; }
+        public Guid Course { get; set; }
     }
 
     public class GetLessonsQuery : IRequest<Result>

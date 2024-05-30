@@ -32,7 +32,7 @@ namespace CMS.Backend.API.Controllers
         //Lessons
 
         [HttpPost("add-lesson")]
-        public async Task<IActionResult> AddLesson([FromBody] AddLessonCommand command)
+        public async Task<IActionResult> AddLesson([FromForm] AddLessonCommand command)
             => Ok(await Bus.ExecuteAsync<AddLessonCommand, Result>(command));
         [HttpPost("delete-lesson")]
         public async Task<IActionResult> DeleteLesson([FromBody] DeleteLessonCommand command)
@@ -41,9 +41,9 @@ namespace CMS.Backend.API.Controllers
         public async Task<IActionResult> EditLesson([FromBody] EditLessonCommand command)
             => Ok(await Bus.ExecuteAsync<EditLessonCommand, Result>(command));
 
-        [HttpGet("get-lessons")]
-        public async Task<IActionResult> GetLessons([FromBody] GetLessonsQuery query)
-            => Ok(await Bus.ExecuteAsync<GetLessonsQuery, Result>(query));
+        [HttpGet("get-lessons/{id}")]
+        public async Task<IActionResult> GetLessons(Guid id)
+            => Ok(await Bus.ExecuteAsync<GetLessonsQuery, Result>(new GetLessonsQuery { CourseId = id}));
 
 
 

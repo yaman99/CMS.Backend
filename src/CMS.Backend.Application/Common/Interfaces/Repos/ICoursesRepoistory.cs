@@ -10,6 +10,8 @@ namespace CMS.Backend.Appilication.Repository
     public interface ICoursesRepoistory
     {
         Task AddAsync(Course course);
+        Task<Course> GetAsync(Guid id);
+        Task UpdateAsync(Course course);
         Task<IEnumerable<Course>> GetinstructorCourses(Guid instructor);
     }
 }
