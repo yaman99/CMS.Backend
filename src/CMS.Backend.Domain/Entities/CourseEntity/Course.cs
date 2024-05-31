@@ -15,6 +15,7 @@ namespace CMS.Backend.Domain.Entities.CourseEntity
         public string Description { get; set; }
         public string Status{ get; set; }
         public IList<Lesson> Lessons { get; set; }
+        public IList<EnrolledStudent> EnrolledStudents { get; set; }
         public Course(Guid id , Guid instructor,  string title , string subject , string description) : base(id)
         {
             Title = title;
@@ -23,6 +24,7 @@ namespace CMS.Backend.Domain.Entities.CourseEntity
             Instructor = instructor;
             Status = "available";
             Lessons = new List<Lesson>();
+            EnrolledStudents = new List<EnrolledStudent>();
         }
 
         public Course(Guid id ):base(id)

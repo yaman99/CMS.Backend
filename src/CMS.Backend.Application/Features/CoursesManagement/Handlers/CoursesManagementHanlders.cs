@@ -26,8 +26,8 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Handlers
         IRequestHandler<GetCoursesQuery, Result>,
         IRequestHandler<GetInstructorCoursesQuery, Result>,
         IRequestHandler<GetStudentCoursesQuery, Result>,
-        IRequestHandler<GetLessonsQuery, Result>
-    {
+        IRequestHandler<GetLessonsQuery, Result>,
+        IRequestHandler<ApplyOnCourseCommand, Result>    {
         private readonly ICurrentUserService _currentUserService;
         private readonly ICoursesRepoistory _coursesRepository;
         private readonly IMapper _mapper;
@@ -56,9 +56,12 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Handlers
             return Result.Success();
         }
 
-        public Task<Result> Handle(DeleteCourseCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(DeleteCourseCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var course = await _coursesRepository.GetAsync(request.CourseId);
+            course.SetDelete(true);
+            await _coursesRepository.UpdateAsync(course);
+            return Result.Success();
         }
 
         public async Task<Result> Handle(AddLessonCommand request, CancellationToken cancellationToken)
@@ -117,9 +120,10 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Handlers
             return Result.Success();
         }
 
-        public Task<Result> Handle(GetCoursesQuery request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(GetCoursesQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var course = await _coursesRepository.GetAllCourses();
+            return Result.Success(course);
         }
 
         public async Task<Result> Handle(GetInstructorCoursesQuery request, CancellationToken cancellationToken)
@@ -129,15 +133,31 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Handlers
             return Result.Success(data);
         }
 
-        public Task<Result> Handle(GetStudentCoursesQuery request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(GetStudentCoursesQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var studentId = Guid.Parse(_currentUserService.UserId!);
+            var courses = await _coursesRepository.GetStudentCourses(studentId);
+            return Result.Success(courses);
         }
 
         public async Task<Result> Handle(GetLessonsQuery request, CancellationToken cancellationToken)
         {
             var data = await _coursesRepository.GetAsync(request.CourseId);
             return Result.Success(data.Lessons);
+        }
+
+        public async Task<Result> Handle(ApplyOnCourseCommand request, CancellationToken cancellationToken)
+        {
+            var studentId = Guid.Parse(_currentUserService.UserId!);
+            var enrolledStudent = new EnrolledStudent(studentId);
+            var course = await _coursesRepository.GetAsync(request.CourseId);
+            if (! course.EnrolledStudents.Any(x => x.Id == studentId))
+            {
+                course.EnrolledStudents.Add(enrolledStudent);
+                await _coursesRepository.UpdateAsync(course);
+            }
+            
+            return Result.Success();
         }
     }
 }

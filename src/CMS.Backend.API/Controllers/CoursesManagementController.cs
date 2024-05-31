@@ -56,12 +56,9 @@ namespace CMS.Backend.API.Controllers
         public async Task<IActionResult> GetInstructorCourses()
            => Ok(await Bus.ExecuteAsync<GetInstructorCoursesQuery, Result>(new GetInstructorCoursesQuery()));
 
-        [HttpGet("get-student-courses/{id}")]
-        public async Task<IActionResult> GetStudentCourses(Guid id)
-           => Ok(await Bus.ExecuteAsync<GetStudentCoursesQuery, Result>(new GetStudentCoursesQuery
-           {
-               Student = id
-           }));
+        [HttpGet("get-student-courses")]
+        public async Task<IActionResult> GetStudentCourses()
+           => Ok(await Bus.ExecuteAsync<GetStudentCoursesQuery, Result>(new GetStudentCoursesQuery()));
 
     }
 }

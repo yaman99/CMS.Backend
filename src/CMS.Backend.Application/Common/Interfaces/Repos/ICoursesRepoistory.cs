@@ -13,5 +13,7 @@ namespace CMS.Backend.Appilication.Repository
         Task<Course> GetAsync(Guid id);
         Task UpdateAsync(Course course);
         Task<IEnumerable<Course>> GetinstructorCourses(Guid instructor);
+        Task<IEnumerable<Course>> GetStudentCourses(Guid student);
+        Task<IEnumerable<Course>> GetAllCourses();
     }
 }

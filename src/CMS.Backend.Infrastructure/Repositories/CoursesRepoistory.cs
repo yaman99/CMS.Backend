@@ -25,6 +25,11 @@ namespace CMS.Backend.Infrastructure.Repositories
             await _repository.AddAsync(course);
         }
 
+        public async Task<IEnumerable<Course>> GetAllCourses()
+        {
+            return await _repository.FindAsync(x=> !x.IsDeleted);
+        }
+
         public Task<Course> GetAsync(Guid id)
         {
             return _repository.GetAsync(id);
@@ -32,7 +37,12 @@ namespace CMS.Backend.Infrastructure.Repositories
 
         public async Task<IEnumerable<Course>> GetinstructorCourses(Guid instructor)
         {
-            return await _repository.FindAsync(x => x.Instructor == instructor);
+            return await _repository.FindAsync(x => x.Instructor == instructor && !x.IsDeleted);
+        }
+
+        public async Task<IEnumerable<Course>> GetStudentCourses(Guid student)
+        {
+            return await _repository.FindAsync(x => x.EnrolledStudents.Any(t => t.Id == student));
         }
 
         public async Task UpdateAsync(Course course)

@@ -18,6 +18,5 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Queries
     }
     public class GetStudentCoursesQuery : IRequest<Result>
     {
-        public Guid Student { get; set; }
     }
 }
