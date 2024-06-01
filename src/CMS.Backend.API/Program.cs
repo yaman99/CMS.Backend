@@ -12,6 +12,7 @@ using CMS.Backend.Domain.Entities.CourseEntity;
 using CMS.Backend.Application.Common.Interfaces;
 using CMS.Backend.API.Services;
 using Microsoft.OpenApi.Models;
+using CMS.Backend.Domain.Entities.CommunityEntity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,6 +72,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
         cb.AddMongo();
         cb.AddMongoRepository<User, Guid>("Users");
         cb.AddMongoRepository<Course, Guid>("Courses");
+        cb.AddMongoRepository<Community, Guid>("Communities");
 
         cb.RegisterType<CurrentUserService>().As<ICurrentUserService>().InstancePerLifetimeScope();
         cb.RegisterType<PasswordHasher<User>>().As<IPasswordHasher<User>>();

@@ -42,7 +42,7 @@ namespace CMS.Backend.Infrastructure.Repositories
 
         public async Task<IEnumerable<Course>> GetStudentCourses(Guid student)
         {
-            return await _repository.FindAsync(x => x.EnrolledStudents.Any(t => t.Id == student));
+            return await _repository.FindAsync(x => x.EnrolledStudents.Any(t => t.Id == student) && !x.IsDeleted);
         }
 
         public async Task UpdateAsync(Course course)

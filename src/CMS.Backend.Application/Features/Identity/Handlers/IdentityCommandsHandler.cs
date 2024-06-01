@@ -1,5 +1,6 @@
 ﻿using CMS.Backend.Appilication.Features.Identity.Commands;
 using CMS.Backend.Appilication.Repository;
+using CMS.Backend.Application.Common.Interfaces;
 using CMS.Backend.Application.Common.Models;
 using CMS.Backend.Application.Features.Identity.Commands;
 using CMS.Backend.Domain;
@@ -27,12 +28,14 @@ namespace CMS.Backend.Appilication.Features.Identity.Handlers
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly ICurrentUserService _currentUserService;
         private readonly IJwtHandler _jwtHandler;
-        public IdentityCommandsHandler(IUserRepository userRepository, IPasswordHasher<User> passwordHasher, IJwtHandler jwtHandler)
+        public IdentityCommandsHandler(IUserRepository userRepository, IPasswordHasher<User> passwordHasher, IJwtHandler jwtHandler, ICurrentUserService currentUserService)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
             _jwtHandler = jwtHandler;
+            _currentUserService = currentUserService;
         }
 
         public async Task<JsonWebToken> Handle(UserSignInCommand request, CancellationToken cancellationToken)
@@ -121,7 +124,8 @@ namespace CMS.Backend.Appilication.Features.Identity.Handlers
 
         public async Task<Result> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetAsync(request.UserId);
+            var userId = Guid.Parse(_currentUserService.UserId!);
+            var user = await _userRepository.GetAsync(userId);
 
             if (user == null || !user.ValidatePassword(request.CurrentPassword, _passwordHasher))
             {

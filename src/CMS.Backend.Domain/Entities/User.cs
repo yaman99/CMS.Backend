@@ -11,6 +11,7 @@ namespace CMS.Backend.Domain.Entities
         
         public string Email { get; private set; }
         public string Name { get; private set; }
+        public string Phone { get; private set; }
         public string PasswordHash { get; private set; }
         public string UserType { get; set; }
         public string ActivationCode { get;  private set; }
@@ -32,6 +33,7 @@ namespace CMS.Backend.Domain.Entities
             IsCompleted = false;
             UserType = userType.ToLowerInvariant();
             Name = name;
+            Phone = string.Empty;
         }
 
         public void SetPassword(string password, IPasswordHasher<User> passwordHasher)

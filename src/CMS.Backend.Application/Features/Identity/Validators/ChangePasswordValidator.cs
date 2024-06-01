@@ -22,14 +22,7 @@ namespace CMS.Backend.Appilication.Features.Identity.Validators
 
             RuleFor(cmd => cmd.CurrentPassword)
                 .NotEmpty().WithMessage("{PropertyName} should be not empty.");
-            RuleFor(cmd => cmd.NewPassword)
-                .NotEmpty().WithMessage("{PropertyName} should be not empty.")
-                .MustAsync(
-                    async (model, newPassword, ct) =>
-                    {
-                        return await IsItOldPassword(model.UserId, newPassword);
-                    }).WithMessage("New Password Same As Old Password")
-                .Length(8, 30);
+           
             RuleFor(cmd => cmd.PasswordConfirmation)
                 .NotEmpty()
                 .Equal(x => x.NewPassword).WithMessage("New Password is Not Equal Password Confirmation");

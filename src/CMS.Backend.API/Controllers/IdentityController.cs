@@ -31,6 +31,9 @@ namespace CMS.Backend.API.Controllers
         [HttpPost("sign-up")]
         public async Task<IActionResult> UserSignUp(UserSignUpCommand command)
             => Ok(await Bus.ExecuteAsync<UserSignUpCommand , Result>(command));
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordCommand command)
+            => Ok(await Bus.ExecuteAsync<ChangePasswordCommand, Result>(command));
 
         [HttpPost("sign-out")]
         public async Task<IActionResult> UserSignOut()
