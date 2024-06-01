@@ -22,7 +22,9 @@ namespace CMS.Backend.Application.Features.CommunityManagement
         IRequestHandler<LeaveCommunityCommand, Result>,
         IRequestHandler<AddPostCommand, Result>,
         IRequestHandler<GetPostsQuery, Result>,
-        IRequestHandler<LikePostCommand, Result>
+        IRequestHandler<LikePostCommand, Result>,
+        IRequestHandler<UpdateCommunityCommand, Result>,
+        IRequestHandler<DeletePostCommand, Result>
 
     {
         private readonly ICurrentUserService _currentUserService;
@@ -81,12 +83,12 @@ namespace CMS.Backend.Application.Features.CommunityManagement
             {
                 FullName = userData.Name
             };
-            if(!community.Members.Any(x=> x.Id == member))
+            if (!community.Members.Any(x => x.Id == member))
             {
                 community.Members.Add(newMember);
                 await _communityRepoistory.UpdateAsync(community);
             }
-            
+
             return Result.Success();
         }
 
@@ -122,10 +124,10 @@ namespace CMS.Backend.Application.Features.CommunityManagement
         public async Task<Result> Handle(GetPostsQuery request, CancellationToken cancellationToken)
         {
             var community = await _communityRepoistory.GetAsync(request.Community);
-            var response = new List<object>(); 
-            foreach (var post in community.Posts)
+            var response = new List<object>();
+            foreach (var post in community.Posts.Where(x=> !x.IsDeleted))
             {
-                var user  = await _userRepository.GetAsync(post.Owner);
+                var user = await _userRepository.GetAsync(post.Owner);
                 response.Add(new
                 {
                     name = user.Name,
@@ -133,6 +135,24 @@ namespace CMS.Backend.Application.Features.CommunityManagement
                 });
             }
             return Result.Success(response);
+        }
+
+        public async Task<Result> Handle(UpdateCommunityCommand request, CancellationToken cancellationToken)
+        {
+            var community = await _communityRepoistory.GetAsync(request.Community);
+            community.Name = request.Name;
+            community.Subject = request.Subject;
+            await _communityRepoistory.UpdateAsync(community);
+            return Result.Success();
+        }
+
+        public async Task<Result> Handle(DeletePostCommand request, CancellationToken cancellationToken)
+        {
+            var community = await _communityRepoistory.GetAsync(request.Community);
+            var post = community.Posts.FirstOrDefault(x => x.Id == request.Post);
+            post.SetDelete(true);
+            await _communityRepoistory.UpdateAsync(community);
+            return Result.Success();
         }
     }
 }

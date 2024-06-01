@@ -13,6 +13,12 @@ namespace CMS.Backend.Application.Features.CommunityManagement
         public string Name { get; set; }
         public string Subject { get; set; }
     }
+    public class UpdateCommunityCommand : IRequest<Result>
+    {
+        public Guid Community { get; set; }
+        public string Name { get; set; }
+        public string Subject { get; set; }
+    }
     public class DeleteCommunityCommand : IRequest<Result>
     {
         public Guid Community { get; set; }
@@ -32,6 +38,12 @@ namespace CMS.Backend.Application.Features.CommunityManagement
         public Guid Community { get; set; }
     }
     public class LikePostCommand : IRequest<Result>
+    {
+        public Guid Post { get; set; }
+        public Guid Community { get; set; }
+    }
+
+    public class DeletePostCommand : IRequest<Result>
     {
         public Guid Post { get; set; }
         public Guid Community { get; set; }

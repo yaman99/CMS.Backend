@@ -17,6 +17,10 @@ namespace CMS.Backend.API.Controllers
         public async Task<IActionResult> AddCourse([FromBody] AddCommunityCommand command)
             => Ok(await Bus.ExecuteAsync<AddCommunityCommand, Result>(command));
 
+        [HttpPost("update-community")]
+        public async Task<IActionResult> UpdateCourse([FromBody] UpdateCommunityCommand command)
+            => Ok(await Bus.ExecuteAsync<UpdateCommunityCommand, Result>(command));
+
         [HttpPost("delete-community")]
         public async Task<IActionResult> DeleteCommunity([FromBody] DeleteCommunityCommand command)
             => Ok(await Bus.ExecuteAsync<DeleteCommunityCommand, Result>(command));
@@ -48,6 +52,10 @@ namespace CMS.Backend.API.Controllers
         [HttpPost("like-post")]
         public async Task<IActionResult> LikePost([FromBody] LikePostCommand command)
             => Ok(await Bus.ExecuteAsync<LikePostCommand, Result>(command));
+
+        [HttpPost("delete-post")]
+        public async Task<IActionResult> DeletePost([FromBody] DeletePostCommand command)
+            => Ok(await Bus.ExecuteAsync<DeletePostCommand, Result>(command));
 
         [HttpGet("get-posts/{id}")]
         public async Task<IActionResult> GetPosts(Guid id)
