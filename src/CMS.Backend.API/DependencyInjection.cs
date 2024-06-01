@@ -2,6 +2,9 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using CMS.Backend.Api.Filters;
+using EmailSender.Interfaces;
+using EmailSender.Models;
+using EmailSender.Service;
 
 
 namespace CMS.Backend.API
@@ -15,6 +18,8 @@ namespace CMS.Backend.API
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddHttpContextAccessor();
+            services.AddTransient<IEmailSenderService, EmailSenderService>();
+            services.Configure<SmtpConfig>(configuration.GetSection("SmtpConfig"));
 
             // Customise default API behaviour
             services.Configure<ApiBehaviorOptions>(options =>

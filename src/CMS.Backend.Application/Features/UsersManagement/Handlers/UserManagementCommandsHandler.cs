@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using CMS.Backend.Domain.Entities;
 using CMS.Backend.Application.EventBus.Bus;
+using CMS.Backend.Domain.Events;
 
 namespace CMS.Backend.Appilication.Features.UsersManagement.Handlers
 {
@@ -92,7 +93,7 @@ namespace CMS.Backend.Appilication.Features.UsersManagement.Handlers
             user.SetPassword(stampPasswrod, _passwordHasher);
 
             await _userRepository.AddAsync(user);
-            //await _eventBus.RaiseEvent(new NewUserAdded(stampPasswrod, user.Email, user.FirstName));
+            await _eventBus.RaiseEvent(new NewAccountCreated( user.Email, stampPasswrod));
         }
        
         

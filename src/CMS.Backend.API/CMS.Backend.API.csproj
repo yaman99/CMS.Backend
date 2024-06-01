@@ -10,13 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Handlers\**" />
     <Compile Remove="Producers\**" />
-    <Content Remove="Handlers\**" />
     <Content Remove="Producers\**" />
-    <EmbeddedResource Remove="Handlers\**" />
     <EmbeddedResource Remove="Producers\**" />
-    <None Remove="Handlers\**" />
     <None Remove="Producers\**" />
   </ItemGroup>
 
@@ -28,6 +24,9 @@
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	<PackageReference Include="FluentValidation" Version="11.1.0" />
 	<PackageReference Include="Autofac" Version="6.4.0" />
+
+	  <PackageReference Include="MailKit" Version="3.3.0" />
+	  <PackageReference Include="MimeKit" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>
