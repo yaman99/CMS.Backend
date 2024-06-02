@@ -11,7 +11,7 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Queries
 {
     public class GetCoursesQuery : IRequest<Result>
     {
-        
+        public bool ForExplore { get; set; }
     }
     public class GetInstructorCoursesQuery : IRequest<Result>
     {

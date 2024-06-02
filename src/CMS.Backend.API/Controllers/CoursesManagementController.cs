@@ -48,9 +48,12 @@ namespace CMS.Backend.API.Controllers
 
 
 
-        [HttpGet("get-courses")]
-        public async Task<IActionResult> GetCourses()
-           => Ok(await Bus.ExecuteAsync<GetCoursesQuery, Result>(new GetCoursesQuery()));
+        [HttpGet("get-courses/{cond}")]
+        public async Task<IActionResult> GetCourses(bool cond)
+           => Ok(await Bus.ExecuteAsync<GetCoursesQuery, Result>(new GetCoursesQuery
+           {
+               ForExplore = cond
+           }));
 
         [HttpGet("get-instructor-courses")]
         public async Task<IActionResult> GetInstructorCourses()

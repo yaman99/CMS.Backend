@@ -14,6 +14,6 @@ namespace CMS.Backend.Appilication.Repository
         Task UpdateAsync(Course course);
         Task<IEnumerable<Course>> GetinstructorCourses(Guid instructor);
         Task<IEnumerable<Course>> GetStudentCourses(Guid student);
-        Task<IEnumerable<Course>> GetAllCourses();
+        Task<IEnumerable<Course>> GetAllCourses(bool cond,Guid student);
     }
 }

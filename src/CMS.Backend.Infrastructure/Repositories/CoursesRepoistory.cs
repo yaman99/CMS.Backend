@@ -25,8 +25,12 @@ namespace CMS.Backend.Infrastructure.Repositories
             await _repository.AddAsync(course);
         }
 
-        public async Task<IEnumerable<Course>> GetAllCourses()
+        public async Task<IEnumerable<Course>> GetAllCourses(bool cond , Guid student)
         {
+            if (cond)
+            {
+                return await _repository.FindAsync(x => !x.EnrolledStudents.Any(t => t.Id == student) && !x.IsDeleted);
+            }
             return await _repository.FindAsync(x=> !x.IsDeleted);
         }
 

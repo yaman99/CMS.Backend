@@ -48,7 +48,7 @@ namespace CMS.Backend.Application.Features.Dashboard
         public async Task<Result> Handle(GetAdminDashboardQuery request, CancellationToken cancellationToken)
         {
             var communities = await _communityRepoistory.GetAllCommunities();
-            var courses = await _coursesRepository.GetAllCourses();
+            var courses = await _coursesRepository.GetAllCourses(false, Guid.Empty);
             var users = await _userRepository.GetAllAsync();
 
             var result = new

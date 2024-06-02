@@ -122,8 +122,17 @@ namespace CMS.Backend.Application.Features.CoursesManagement.Handlers
 
         public async Task<Result> Handle(GetCoursesQuery request, CancellationToken cancellationToken)
         {
-            var course = await _coursesRepository.GetAllCourses();
-            return Result.Success(course);
+            var studentId = Guid.Parse(_currentUserService.UserId!);
+            IEnumerable<Course> result = new List<Course>();
+            if (request.ForExplore)
+            {
+                result= await _coursesRepository.GetAllCourses(true , studentId);
+            }
+            else
+            {
+                 result = await _coursesRepository.GetAllCourses(false , Guid.Empty);
+            }
+            return Result.Success(result);
         }
 
         public async Task<Result> Handle(GetInstructorCoursesQuery request, CancellationToken cancellationToken)
